@@ -1073,8 +1073,9 @@ class RestController extends Controller
     {
         $offset = ($request->getQueryParam('offset') && is_numeric($request->getQueryParam('offset')) && $request->getQueryParam('offset') >= 0) ? $request->getQueryParam('offset') : 0;
         $limit = ($request->getQueryParam('limit') && is_numeric($request->getQueryParam('limit')) && $request->getQueryParam('limit') >= 0) ? $request->getQueryParam('limit') : 200;
+        $showDeprecated = $request->getVocab()->getConfig()->getShowDeprecatedChanges();
 
-        return $this->changedConcepts($request, 'dc:created', $offset, $limit);
+        return $this->changedConcepts($request, 'dc:created', $offset, $limit, $showDeprecated);
     }
 
     /**
@@ -1086,8 +1087,9 @@ class RestController extends Controller
     {
         $offset = ($request->getQueryParam('offset') && is_numeric($request->getQueryParam('offset')) && $request->getQueryParam('offset') >= 0) ? $request->getQueryParam('offset') : 0;
         $limit = ($request->getQueryParam('limit') && is_numeric($request->getQueryParam('limit')) && $request->getQueryParam('limit') >= 0) ? $request->getQueryParam('limit') : 200;
+        $showDeprecated = $request->getVocab()->getConfig()->getShowDeprecatedChanges();
 
-        return $this->changedConcepts($request, 'dc:modified', $offset, $limit);
+        return $this->changedConcepts($request, 'dc:modified', $offset, $limit, $showDeprecated);
     }
 
     /**
