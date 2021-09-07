@@ -10,6 +10,7 @@ var missing_value = "{% trans %}Value is required and can not be empty{% endtran
 var expand_paths = "{% trans %}show all # paths{% endtrans %}";
 var expand_propvals = "{% trans %}show all # values{% endtrans %}";
 var hiertrans = "{% trans "Hier-nav" %}";
+var depr_trans = "{% trans %}Deprecated concept{% endtrans %}";
 var sr_only_translations = {
   hierarchy_listing: "{% trans "Hierarchical listing of vocabulary concepts" %}",
   groups_listing: "{% trans "Hierarchical listing of vocabulary concepts and groupings" %}",
@@ -40,11 +41,13 @@ var pluginParameters = {{ plugin_params|raw }};
 {% endif %}
 </script>
 
-{% if request.page == 'page' and search_results and search_results|length == 1 %}
 <script type="application/ld+json">
+{% if search_results and search_results|length == 1 %}
 {{ search_results|first.dumpJsonLd|raw }}
-</script>
+{% else %}
+{}
 {% endif %}
+</script>
 <script src="vendor/components/jquery/jquery.min.js"></script>
 <script src="vendor/components/jqueryui/jquery-ui.min.js"></script>
 <script src="vendor/components/handlebars.js/handlebars.min.js"></script>
