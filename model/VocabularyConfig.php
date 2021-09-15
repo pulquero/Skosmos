@@ -440,7 +440,7 @@ class VocabularyConfig extends BaseConfig
         $defview = $this->resource->getLiteral('skosmos:defaultSidebarView');
         if ($defview) {
             $value = $defview->getValue();
-            if ($value === 'groups' || $value === 'hierarchy') {
+            if ($value === 'groups' || $value === 'hierarchy' || $value == 'new') {
                 return $value;
             }
 
